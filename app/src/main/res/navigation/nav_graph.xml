@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/listOverview">
+
+    <fragment
+        android:id="@+id/listOverview"
+        android:name="com.example.random_land.listoverview.ListOverview"
+        android:label="ListOverview" >
+        <action
+            android:id="@+id/action_listOverview_to_peopleDetail"
+            app:destination="@id/peopleDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/peopleDetail"
+        android:name="com.example.random_land.peopledetail.PeopleDetail"
+        android:label="fragment_people_detail"
+        tools:layout="@layout/fragment_people_detail" />
+</navigation>
