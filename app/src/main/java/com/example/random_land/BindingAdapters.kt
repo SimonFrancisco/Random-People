@@ -10,41 +10,35 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.random_land.listoverview.PeopleApiStatus
 import com.example.random_land.listoverview.PeopleListAdapter
 import com.example.random_land.network.PeopleRandom
-import com.example.random_land.network.Results
 
-/***
- * No need for now
- */
+
 @BindingAdapter("imageUrl")
-fun bindImage(imgView:ImageView,imgUrl:List<Results>?){
-    if (imgUrl != null) {
-        for (images in imgUrl.indices){
-            imgUrl[images]?.let {
-                val getImage = it.picture?.large
-                val imgUri = getImage?.toUri()?.buildUpon()?.scheme("https")?.build()
-                Glide.with(imgView.context)
-                    .load(imgUri)
-                    .apply(RequestOptions()
-                        .placeholder(R.drawable.loading_animation)
-                        .error(R.drawable.ic_broken_image))
-                    .into(imgView)
-            }
-        }
+fun bindImage(imgView: ImageView, imgUrl: String?) {
+    imgUrl.let {
+        val imgUri = it?.toUri()?.buildUpon()?.scheme("https")?.build()
+        Glide.with(imgView.context)
+            .load(imgUri)
+            .apply(RequestOptions()
+                    .placeholder(R.drawable.loading_animation)
+                    .error(R.drawable.ic_broken_image))
+            .into(imgView)
     }
 }
 
 @BindingAdapter("peopleApiStatus")
-fun bindStatus(statusImageView:ImageView,status:PeopleApiStatus){
-    when(status){
-        PeopleApiStatus.LOADING ->{
+fun bindStatus(statusImageView: ImageView, status: PeopleApiStatus) {
+    when (status) {
+        PeopleApiStatus.LOADING -> {
             statusImageView.visibility = View.VISIBLE
             statusImageView.setImageResource(R.drawable.loading_animation)
         }
-        PeopleApiStatus.ERROR ->{
+
+        PeopleApiStatus.ERROR -> {
             statusImageView.visibility = View.VISIBLE
             statusImageView.setImageResource(R.drawable.ic_connection_error)
         }
-        else ->{
+
+        else -> {
             statusImageView.visibility = View.GONE
         }
     }
@@ -54,7 +48,7 @@ fun bindStatus(statusImageView:ImageView,status:PeopleApiStatus){
  * No need for now
  */
 @BindingAdapter("listData")
-fun bindRecyclerView(recyclerView:RecyclerView,data:List<PeopleRandom>?){
+fun bindRecyclerView(recyclerView: RecyclerView, data: List<PeopleRandom>?) {
     val adapter = recyclerView.adapter as PeopleListAdapter
     adapter.submitList(data)
 }

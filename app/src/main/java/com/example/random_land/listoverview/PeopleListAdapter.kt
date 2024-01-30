@@ -11,10 +11,11 @@ import com.example.random_land.network.PeopleRandom
 /***
  * We are not using this for now
  */
-class PeopleListAdapter:ListAdapter<PeopleRandom,PeopleListAdapter.PeopleRandomViewHolder>(DiffCallBack) {
-    companion object DiffCallBack:DiffUtil.ItemCallback<PeopleRandom>() {
+class PeopleListAdapter :
+    ListAdapter<PeopleRandom, PeopleListAdapter.PeopleRandomViewHolder>(DiffCallBack) {
+    companion object DiffCallBack : DiffUtil.ItemCallback<PeopleRandom>() {
         override fun areItemsTheSame(oldItem: PeopleRandom, newItem: PeopleRandom): Boolean {
-                return oldItem == newItem
+            return oldItem == newItem
         }
 
         override fun areContentsTheSame(oldItem: PeopleRandom, newItem: PeopleRandom): Boolean {
@@ -23,11 +24,12 @@ class PeopleListAdapter:ListAdapter<PeopleRandom,PeopleListAdapter.PeopleRandomV
 
     }
 
-    class PeopleRandomViewHolder(private var binding:PeopleListBinding):RecyclerView.ViewHolder(binding.root) {
-            fun binding(peopleRandom: PeopleRandom){
-                binding.people = peopleRandom
-                binding.executePendingBindings()
-            }
+    class PeopleRandomViewHolder(private var binding: PeopleListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun binding(peopleRandom: PeopleRandom) {
+            binding.people = peopleRandom
+            binding.executePendingBindings()
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PeopleRandomViewHolder {

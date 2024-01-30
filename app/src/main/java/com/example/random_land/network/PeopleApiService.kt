@@ -17,13 +17,14 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
-interface PeopleApiService{
+interface PeopleApiService {
     @GET("?results=100&noinfo&format=pretty")
     suspend fun getPeople():
             PeopleRandom
 }
-object PeopleApi{
-    val retrofitService:PeopleApiService by lazy {
+
+object PeopleApi {
+    val retrofitService: PeopleApiService by lazy {
         retrofit.create(PeopleApiService::class.java)
     }
 }

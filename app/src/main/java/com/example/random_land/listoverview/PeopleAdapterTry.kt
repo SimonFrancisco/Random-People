@@ -22,7 +22,7 @@ class PeopleAdapterTry : RecyclerView.Adapter<PeopleAdapterTry.MyViewHolder>() {
         val peopleName: TextView = itemView.findViewById(R.id.name_Surname)
         val peopleAddress: TextView = itemView.findViewById(R.id.address)
         val peopleNumber: TextView = itemView.findViewById(R.id.number)
-        val peopleLayout:RelativeLayout = itemView.findViewById(R.id.peopleTouch)
+        val peopleLayout: RelativeLayout = itemView.findViewById(R.id.peopleTouch)
 
     }
 
@@ -31,6 +31,7 @@ class PeopleAdapterTry : RecyclerView.Adapter<PeopleAdapterTry.MyViewHolder>() {
             LayoutInflater.from(parent.context).inflate(R.layout.people_list, parent, false)
         )
     }
+
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentPerson = peopleList[position]
         val currentImage: String? = currentPerson.picture?.large
@@ -60,7 +61,7 @@ class PeopleAdapterTry : RecyclerView.Adapter<PeopleAdapterTry.MyViewHolder>() {
             "Адрес: ${currentPerson.location?.street?.name},${currentPerson.location?.street?.number}"
         holder.peopleNumber.text = "Номер: ${currentPerson.phone}"
 
-        holder.peopleLayout.setOnClickListener{
+        holder.peopleLayout.setOnClickListener {
             val action = ListOverviewDirections.actionListOverviewToPeopleDetail(currentPerson)
             holder.itemView.findNavController().navigate(action)
         }
@@ -69,6 +70,7 @@ class PeopleAdapterTry : RecyclerView.Adapter<PeopleAdapterTry.MyViewHolder>() {
     override fun getItemCount(): Int {
         return peopleList.size
     }
+
     fun setData(people: List<Results>) {
         this.peopleList = people
         notifyDataSetChanged()

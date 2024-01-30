@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.random_land.databinding.FragmentListOverviewBinding
@@ -18,15 +17,15 @@ class ListOverview : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentListOverviewBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         val adapter = PeopleAdapterTry()
         val recyclerView = binding.peopleRandom
         recyclerView.adapter = adapter
-        viewModel.people.observe(viewLifecycleOwner){people->
-            if (people.isNotEmpty()){
+        viewModel.people.observe(viewLifecycleOwner) { people ->
+            if (people.isNotEmpty()) {
                 adapter.setData(people[0].results)
             }
         }
