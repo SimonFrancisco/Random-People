@@ -5,26 +5,45 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.random_land.network.PeopleApi
+import com.example.random_land.network.PeopleRandom
+import com.example.random_land.network.Results
 import kotlinx.coroutines.launch
-
+enum class PeopleApiStatus{LOADING,ERROR,DONE}
 class ListOverviewViewModel : ViewModel() {
 
+    private val _status = MutableLiveData<PeopleApiStatus>()
     private val _response = MutableLiveData<String>()
-    val response: LiveData<String>
+    val response:LiveData<String>
         get() = _response
+    val status: LiveData<PeopleApiStatus>
+        get() = _status
 
     init {
         getPeopleRandom()
     }
+    private val _people =MutableLiveData<List<PeopleRandom>>()
+   /* private val _peopleTry = MutableLiveData<Results>()
+    val peopleTry : LiveData<Results>
+        get() = _peopleTry*/
+    val people : LiveData<List<PeopleRandom>>
+        get() = _people
+
 
     private fun getPeopleRandom() {
         viewModelScope.launch {
             try {
+                _status.value = PeopleApiStatus.LOADING
                 val listResult = PeopleApi.retrofitService.getPeople()
-                _response.value = "Success: ${listResult.results[5].email}"
+                /*_response.value = "Success: ${listResult.results.map {for ()
+                }}"*/
+                _status.value = PeopleApiStatus.DONE
+                _people.value = listOf(listResult)
+                //_response.value = "${listResult.results.size}"
             }
             catch (e:Exception){
-                _response.value = "Failure: ${e.message}"
+                _status.value = PeopleApiStatus.ERROR
+                //_response.value ="Failure ${e.message}"
+                _people.value = ArrayList()
             }
         }
     }

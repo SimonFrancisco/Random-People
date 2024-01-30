@@ -1,10 +1,10 @@
 package com.example.random_land.network
 
 data class PeopleRandom(
-    val results: List<Result>
+    val results: List<Results>
 )
 
-data class Result(
+data class Results(
     val cell: String?,
     val dob: Dob?,
     val email: String?,

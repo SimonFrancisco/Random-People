@@ -1,6 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="people"
+            type="com.example.random_land.network.PeopleRandom" />
+
+        <variable
+            name="peopleImg"
+            type="com.example.random_land.network.Picture" />
+
+        <variable
+            name="peopleName"
+            type="com.example.random_land.network.Name" />
+
+        <variable
+            name="peopleAddress"
+            type="com.example.random_land.network.Street" />
+
+        <variable
+            name="peopleResults"
+            type="com.example.random_land.network.Results" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/dark_blue"
+        app:cardPreventCornerOverlap="true"
+        app:cardCornerRadius="8dp"
+        app:cardUseCompatPadding="true"
+        android:clipToPadding="false"
+        >
+
+        <RelativeLayout
+            android:id="@+id/peopleTouch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/people_image"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="10dp"
+                android:adjustViewBounds="true"
+                android:padding="2dp"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/roundedImageViewRound"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <TextView
+                android:id="@+id/name_Surname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:layout_toEndOf="@id/people_image"
+                android:text="@string/simon_fernando_dala_francisco"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name_Surname"
+                android:layout_toEndOf="@id/people_image"
+                android:text="@string/simon_fernando_dala_francisco"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/address"
+                android:layout_marginBottom="10dp"
+                android:layout_toEndOf="@id/people_image"
+                android:text="@string/simon_fernando_dala_francisco"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
 
 </layout>
