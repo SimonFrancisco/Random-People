@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".peopledetail.PeopleDetail">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.random_land.peopledetail.PeopleDetailViewModel" />
+    </data>
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        tools:context=".peopledetail.PeopleDetail">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{viewModel.selectedPerson.name.first}"
+            android:textColor="@color/black"
+            android:textSize="30sp"/>
+    </ScrollView>
 
-</FrameLayout>
+
+</layout>

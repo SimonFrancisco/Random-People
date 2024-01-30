@@ -17,5 +17,9 @@
         android:id="@+id/peopleDetail"
         android:name="com.example.random_land.peopledetail.PeopleDetail"
         android:label="About me"
-        tools:layout="@layout/fragment_people_detail" />
+        tools:layout="@layout/fragment_people_detail" >
+        <argument
+            android:name="selectedPerson"
+            app:argType="com.example.random_land.network.Results" />
+    </fragment>
 </navigation>

@@ -1,23 +1,29 @@
 package com.example.random_land.network
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
+
+@Parcelize
 data class PeopleRandom(
-    val results: List<Results>
-)
+    val results: @RawValue List<Results>
+):Parcelable
+@Parcelize
 
 data class Results(
     val cell: String?,
-    val dob: Dob?,
+    val dob: @RawValue Dob?,
     val email: String?,
     val gender: String?,
-    val id: Id?,
-    val location: Location?,
-    val login: Login?,
-    val name: Name?,
+    val id: @RawValue Id?,
+    val location: @RawValue Location?,
+    val login: @RawValue Login?,
+    val name: @RawValue Name?,
     val nat: String?,
     val phone: String?,
-    val picture: Picture?,
-    val registered: Registered?
-)
+    val picture: @RawValue Picture?,
+    val registered: @RawValue Registered?
+):Parcelable
 
 data class Dob(
     val age: Int?,
