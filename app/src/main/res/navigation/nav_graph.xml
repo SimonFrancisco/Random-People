@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/listOverview"
         android:name="com.example.random_land.listoverview.ListOverview"
-        android:label="ListOverview" >
+        android:label="Random People">
         <action
             android:id="@+id/action_listOverview_to_peopleDetail"
             app:destination="@id/peopleDetail" />
@@ -16,6 +16,10 @@
     <fragment
         android:id="@+id/peopleDetail"
         android:name="com.example.random_land.peopledetail.PeopleDetail"
-        android:label="fragment_people_detail"
-        tools:layout="@layout/fragment_people_detail" />
+        android:label="About me"
+        tools:layout="@layout/fragment_people_detail" >
+        <argument
+            android:name="selectedPerson"
+            app:argType="com.example.random_land.network.Results" />
+    </fragment>
 </navigation>
