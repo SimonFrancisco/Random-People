@@ -18,7 +18,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface PeopleApiService {
-    @GET("?results=100&noinfo&format=pretty")
+    @GET("?results=100&noinfo&format=pretty&seed=foobar")
     suspend fun getPeople():
             PeopleRandom
 }
